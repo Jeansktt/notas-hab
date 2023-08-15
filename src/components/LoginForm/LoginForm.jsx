@@ -43,7 +43,9 @@ const LoginForm = ({ login }) => {
         autoFocus
         required
       />
-      <button>Login</button>
+      <div className='button-container'>
+        <button>Loguearse</button>
+      </div>
 
       {errMsg && <ErrorMessage msg={errMsg} />}
     </form>

@@ -4,25 +4,33 @@ import { NavLink } from 'react-router-dom';
 import './NoteSearch.css';
 
 const NoteSearchPage = () => {
-  const { notes } = useNotes();
+    const { notes, deleteNote } = useNotes();
 
-  return (
-    <main className='note-search'>
-      <div className='head'>
-        <h2>Listado de Notas</h2>
-        <NavLink to='/'>Volver</NavLink>
-      </div>
-      <ul>
-        {notes.length > 0 ? (
-          notes.map((note) => 
-         <Note key={note.id} note={note} />)
-        
-         ) : (
-          <li>no se encuentran notas</li>
-        )}
-      </ul>
-    </main>
-  );
+    const handleDeleteNote = (noteId) => {
+        deleteNote(noteId);
+    };
+
+    return (
+        <main className='note-search'>
+            <div className='head'>
+                <h2>Listado de Notas</h2>
+                <NavLink to='/' className='return-button'>Volver</NavLink>
+            </div>
+            <ul>
+                {notes.length > 0 ? (
+                    notes.map((note) => (
+                        <Note
+                            key={note.id}
+                            note={note}
+                            onDelete={handleDeleteNote}
+                        />
+                    ))
+                ) : (
+                    <li>No se encuentran Notas</li>
+                )}
+            </ul>
+        </main>
+    );
 };
 
 export default NoteSearchPage;

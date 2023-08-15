@@ -1,14 +1,12 @@
+import { Link } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
-  
-  
-  return (
-    <header>
-      <h1>Travel Notes</h1>
-      
-    </header>
-  );
+    return (
+        <header>
+            <Link to='/'>Travel Notes</Link>
+        </header>
+    );
 };
 
 export default Header;

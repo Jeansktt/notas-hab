@@ -1,11 +1,13 @@
 import { NavLink } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import './HomePage.css';
+
 const HomePage = () => {
   const { token, logout, user } = useAuth();
+
   return (
     <div className='home-page'>
-      <h1>Bienvenido a Travel Notes</h1>
+      <h1>Bienvenido a TravelNotes</h1>
       <p>
         ¡Descubre los lugares más increíbles para viajar y guarda tus notas de
         viaje en TravelNotes!
@@ -14,23 +16,39 @@ const HomePage = () => {
         {user && <p>Bienvenido {user.username}</p>}
         {!token && (
           <>
-            <div className='button-login'>
-              <NavLink to='/login'>Login</NavLink>
+            <div
+              className='button-login'
+              onClick={() => (window.location.href = '/login')}
+            >
+              <div className='clickable-button'>
+                <NavLink to='/login'>Login</NavLink>
+              </div>
             </div>
-            <div className='button-register'>
-              <NavLink to='/register'>Registro</NavLink>
+            <div
+              className='button-register'
+              onClick={() => (window.location.href = '/register')}
+            >
+              <div className='clickable-button'>
+                <NavLink to='/register'>Registro</NavLink>
+              </div>
             </div>
           </>
         )}
         {token && (
           <>
-            <div className='button-message'>
-              <NavLink to='/message'>Crea tu Nota</NavLink>
+            <div
+              className='button-message clickable-button'
+              onClick={() => (window.location.href = '/message')}
+            >
+              <NavLink to='/message'>Nueva Nota</NavLink>
             </div>
-            <div className='button-close' onClick={() => logout()}>
+            <div className='button-close clickable-button' onClick={logout}>
               <p>Cerrar Sesión</p>
             </div>
-            <div className='button-notes'>
+            <div
+              className='button-notes clickable-button'
+              onClick={() => (window.location.href = '/notes')}
+            >
               <NavLink to='/notes'>Ver Notas</NavLink>
             </div>
           </>
